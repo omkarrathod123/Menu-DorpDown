@@ -1,12 +1,17 @@
-using TestMenu.Client.Pages;
+﻿using TestMenu.Client.Pages;
 using TestMenu.Components;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using TestMenu.Data;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<TestMenuContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("TestMenuContext") ?? throw new InvalidOperationException("Connection string 'TestMenuContext' not found.")));
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveWebAssemblyComponents();
-
+builder.Services.AddControllers();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -22,7 +27,7 @@ else
 }
 
 app.UseHttpsRedirection();
-
+app.MapControllers();
 app.UseStaticFiles();
 app.UseAntiforgery();
 
