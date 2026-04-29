@@ -23,7 +23,7 @@ namespace TestMenu.Controllers
 
         // GET: api/Countries
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Country>>> GetCountry()
+        public async Task<ActionResult<IList<Country>>> GetCountry()
         {
             return await _context.Country.ToListAsync();
         }

@@ -1,0 +1,46 @@
+﻿@page "/countries"
+@inject HttpClient Http
+@rendermode @(new InteractiveWebAssemblyRenderMode(prerender:false))
+
+<div class="row mt-4">
+    <div class="col-6">
+        <h4 class="card-title text-primary">Country List</h4>
+    </div>
+    <div class="col-4 offset-2">
+        <a href="countries" class="btn btn-info from-control">Add New Country</a>
+    </div>
+</div>
+@if (country == null){
+    <div class="text-center">
+        <img src="images/loading.gif"/>
+    </div>
+}
+else if (country.Count == 0)
+{
+    <div>None Found</div>
+}
+else
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Country</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var item in country)
+            {
+                <tr>
+                    <td>
+                        @item.countryName
+                    </td>
+                    <td>
+                        <a href="/countries/@item.Id">Edit</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+<h3>Countries</h3>
