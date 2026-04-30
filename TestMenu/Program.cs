@@ -5,8 +5,8 @@ using Microsoft.Extensions.DependencyInjection;
 using TestMenu.Data;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddDbContext<TestMenuContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("TestMenuContext") ?? throw new InvalidOperationException("Connection string 'TestMenuContext' not found.")));
+builder.Services.AddDbContext<TestMenuContextDB>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("TestMenuContextDB") ?? throw new InvalidOperationException("Connection string 'TestMenuContextDB' not found.")));
 
 // Add services to the container.
 builder.Services.AddRazorComponents()

@@ -7,9 +7,9 @@ using TestMenu.Classes;
 
 namespace TestMenu.Data
 {
-    public class TestMenuContext : DbContext
+    public class TestMenuContextDB : DbContext
     {
-        public TestMenuContext (DbContextOptions<TestMenuContext> options)
+        public TestMenuContextDB (DbContextOptions<TestMenuContextDB> options)
             : base(options)
         {
         }

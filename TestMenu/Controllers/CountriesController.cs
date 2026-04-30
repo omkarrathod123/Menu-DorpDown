@@ -10,20 +10,20 @@ using TestMenu.Data;
 
 namespace TestMenu.Controllers
 {
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class CountriesController : ControllerBase
     {
-        private readonly TestMenuContext _context;
+        private readonly TestMenuContextDB _context;
 
-        public CountriesController(TestMenuContext context)
+        public CountriesController(TestMenuContextDB context)
         {
             _context = context;
         }
 
         // GET: api/Countries
         [HttpGet]
-        public async Task<ActionResult<IList<Country>>> GetCountry()
+        public async Task<ActionResult<IEnumerable<Country>>> GetCountry()
         {
             return await _context.Country.ToListAsync();
         }

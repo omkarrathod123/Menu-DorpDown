@@ -10,7 +10,7 @@ using TestMenu.Data;
 
 namespace TestMenu.Migrations
 {
-    [DbContext(typeof(TestMenuContext))]
+    [DbContext(typeof(TestMenuContextDB))]
     [Migration("20260429132802_Init")]
     partial class Init
     {
